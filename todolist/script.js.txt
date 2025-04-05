@@ -1,0 +1,25 @@
+function ajouterTache() {
+  var input = document.getElementById("nouvelleTache");
+  var nouvelleTacheTexte = input.value.trim();
+  if (nouvelleTacheTexte === "") {
+    alert("Veuillez entrer une tâche valide !");
+    return;
+  }
+
+  var liste = document.getElementById("listeTaches");
+
+  var nouvelleTache = document.createElement("li");
+  nouvelleTache.textContent = nouvelleTacheTexte;
+
+  var boutonSupprimer = document.createElement("button");
+  boutonSupprimer.textContent = "Supprimer";
+  boutonSupprimer.className = "supprimer";
+  boutonSupprimer.onclick = function () {
+    liste.removeChild(nouvelleTache);
+  };
+
+  nouvelleTache.appendChild(boutonSupprimer);
+  liste.appendChild(nouvelleTache);
+
+  input.value = "";
+}
